@@ -1,16 +1,16 @@
 <template>
-<nav :class="style">
+<nav :class="estilo">
    <ul>
-       <li v-for="(key,index) in menulista" :key="index" :style="'float:'+direccion+';'" >
+       <li  v-for="(key,index) in menulista" :key="index" v-if="validador(key.lvl)" :style="'float:'+direccion+';'" >
 
-       <a  v-if="!key.submenu" :href="'#'+key.href" >{{key.title}}</a>
+       <a  v-if="!key.submenu" :href="pre+key.href" >{{key.title}}</a>
        
-       <div v-if="key.submenu" class="_submenu" >
+       <div v-if="key.submenu && validador(key.lvl)" class="_submenu" >
        {{key.title}}
       
            <ul v-if="key.submenu" >
-               <li v-for="(skey,index) in key.submenu">
-                  <a :href="'#'+skey.href">{{skey.title}}</a>
+               <li v-for="(skey,index) in key.submenu" v-if="validador(skey.lvl)">
+                  <a :href="pre+skey.href">{{skey.title}}</a>
                </li>
            </ul>
 
@@ -20,81 +20,65 @@
 </nav>
 </template>
 <style>
-/**--defaul----**/
-
-nav ul{
-    list-style:none;
-}
-
-nav ul li{
-    padding: 10px;
-    color:#000
-}
-
-nav ul li a:link {
-       text-decoration: none; 
-}
-
-nav ul li a:hover {
-       text-decoration: none; 
-}
-
-nav ul li a:focus {
-       text-decoration: none; 
-}
 
 /**--style1----**/
-
-
-style1 ul{
+.style1 ul{
     list-style:none;
-    background-color:
+     
+     padding:1%;
+       z-index:99999999999999999999999999999999;
 }
-
-style1 ul li{
+.style1 ul li{
+    top:-20px;
     padding: 10px;
-    color:#000
+    background-color: rgb(0, 87, 163);
+    color:#fff;
+    position:relative;
+   
+    
+
+}
+.style1 ul li a {
+    width:100%;
+       text-decoration: none; 
+       color:#fff;
+}
+.style1 ul li:hover {
+        background-color:#FF4000;;
 }
 
-style1 ul li a:link {
-       text-decoration: none; 
-}
-
-style1 ul li a:hover {
-       text-decoration: none; 
-}
-
-style1 ul li a:focus {
-       text-decoration: none; 
-}   n  nn                                  n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         nnnnnnnnnnnnnn                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   bb  
-
-/**--style2----**/
-
-/**--style3----**/
-
-
+/**--submenu---**/
 
 
 ._submenu{
     cursor:pointer;
     position:relative;
-
 }
 ._submenu ul{
-  padding:0px;
+  top:35px;
   display:none;
   position:absolute;
-  z-index:99999999999999999999999999999999;
   left:0px;
+  
+}
+._submenu ul li a{
+    width:100%;
+    
+}
+._submenu ul li {
+    width:180px;
+    background-color: rgb(0, 87, 163);
+    /*border:solid #000 1px;*/
+    box-shadow: 0 0 5px #000;
 }
 
-
-
+._submenu ul li:hover {
+   background-color:#FF4000;
+    
+}
 ._submenu:hover ul{
   display:block;
-
 }
-
 </style>
 <script>
 module.exports={
@@ -103,13 +87,29 @@ module.exports={
         
         }
     },
+    methods:{
+        validador(p){
+            
+            if(p.indexOf(this.lvl)>-1){
+                return true
+            }else{
+                return false
+            }
+        }
+    },
     props:{
         menulista:{},
         direccion:{
             default:"left"
         },
-        style:{
+        estilo:{
           default:"style1"
+        },
+        pre:{
+            default:""
+        },
+        lvl:{
+            default:0
         }
     },
     mounted(){
