@@ -1,4 +1,3 @@
-{
 
 Se agrega la etiqueta importada, con los props 
 
@@ -161,4 +160,3 @@ Se agrega la etiqueta importada, con los props
                             }
                     ]
                 },
-}
