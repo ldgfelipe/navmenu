@@ -6,38 +6,23 @@ Se agrega la etiqueta importada, con los props
 -pre:Si lleva algo mas antes del enlace como por ejemplo [pre][key.href] = #/linkenlace
 -estilo:indica el estilo que desea utilizar  style1, style2 
 
+Props
 
-< navmenu  :menulista='listamenu' :lvl='permisos' ></ navmenu>
-}
-var listamenu=[
-                {
-                    title:"Inicio",
-                    href:"./?u=tablero",
-                    lvl:[0,2,1]
-                },
-                {
-                    title:"Lotes",
-                    href:"/",
-                    lvl:[2,1],
-                    submenu:[
-                    {
-                        title:'Administrar',
-                        href:'./?u=tablero&ad=administrar-obsoletos',
-                        lvl:[2,1],
-                    },
-                    {
-                        title:"Subir Lotes",
-                        href:"./?u=tablero&ad=listas-obsoletos",
-                        lvl:[2,1]
-                    },
-                    {
-                        title:"CRM",
-                        href:"./?u=tablero&ad=mi-crm",
-                        lvl:[2,1]
-                        
-                        },
-                    
+menulista=Recibe el array con la estructura del menú
+           ejemplo 
+           Array = [
+                  {
+                    titulo:"", ///agrega al titulo al menu
+                    href:"", // el link de destino 
+                    lvl:"", // permisos de comparación 
+                    submenu: [  //// SUB MENU ---------------
+                        titulo:"", ///agrega al titulo al menu
+                        href:"", // el link de destino
                     ]
+                  }
+           ]
+                  
 
-                },
-             ]
+lvl=recibe el nivel de permiso se compara con el lvl del array de menu
+
+estilo= Puede elegir 3 estilos de menu style1, style2 y style3 /// [desarrollo pendiente]
