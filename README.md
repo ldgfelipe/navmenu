@@ -8,3 +8,36 @@ Se agrega la etiqueta importada, con los props
 
 
 < navmenu  :menulista='listamenu' :lvl='permisos' ></ navmenu>
+
+var listamenu:[
+                {
+                    title:"Inicio",
+                    href:"./?u=tablero",
+                    lvl:[0,2,1]
+                },
+                {
+                    title:"Lotes",
+                    href:"/",
+                    lvl:[2,1],
+                    submenu:[
+                    {
+                        title:'Administrar',
+                        href:'./?u=tablero&ad=administrar-obsoletos',
+                        lvl:[2,1],
+                    },
+                    {
+                        title:"Subir Lotes",
+                        href:"./?u=tablero&ad=listas-obsoletos",
+                        lvl:[2,1]
+                    },
+                    {
+                        title:"CRM",
+                        href:"./?u=tablero&ad=mi-crm",
+                        lvl:[2,1]
+                        
+                        },
+                    
+                    ]
+
+                },
+             ]
