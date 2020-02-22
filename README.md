@@ -7,3 +7,4 @@ Se agrega la etiqueta importada, con los props
 -estilo:indica el estilo que desea utilizar  style1, style2 
 
 
+<navmenu  :menulista='listamenu' :lvl='permisos' ></navmenu>
