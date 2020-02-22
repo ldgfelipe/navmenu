@@ -9,7 +9,7 @@ Se agrega la etiqueta importada, con los props
 
 < navmenu  :menulista='listamenu' :lvl='permisos' ></ navmenu>
 
-var listamenu:[
+var listamenu=[
                 {
                     title:"Inicio",
                     href:"./?u=tablero",
